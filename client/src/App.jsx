@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-// 🎴 Company Card
+// Company Card
 const CompanyCard = ({ company, onDelete, onEdit }) => (
   <div className="bg-white border border-gray-300 rounded-lg shadow-md hover:shadow-lg transition p-4">
     <div className="flex justify-between items-start mb-3">
@@ -30,7 +30,7 @@ const CompanyCard = ({ company, onDelete, onEdit }) => (
   </div>
 );
 
-// 🔍 Filter Form
+// Filter Form
 const FilterForm = ({ onFilter }) => {
   const [filters, setFilters] = useState({ industry: "", location: "", size: "" });
 
@@ -76,7 +76,7 @@ const FilterForm = ({ onFilter }) => {
   );
 };
 
-// 📝 Add/Edit Form
+// Add/Edit Form
 const CompanyForm = ({ company, onSave, onCancel }) => {
   const [formData, setFormData] = useState({
     name: "", industry: "", location: "", ceo: "", foundedYear: "", size: "", revenue: "", website: ""
@@ -114,7 +114,7 @@ const CompanyForm = ({ company, onSave, onCancel }) => {
   );
 };
 
-// 🚀 Main App
+//Main App
 const App = () => {
   const [companies, setCompanies] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -153,7 +153,7 @@ const App = () => {
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold text-blue-900">Company Directory</h1>
+          <h1 className="text-3xl font-bold text-blue-900">Company Handler</h1>
           <button onClick={() => setShowForm(true)} className="bg-blue-900 text-white px-4 py-2 rounded">+ Add Company</button>
         </div>
         <FilterForm onFilter={fetchCompanies} />
