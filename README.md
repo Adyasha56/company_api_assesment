@@ -1,151 +1,105 @@
-# 🏢 Companies API
+# Company API Assessment
 
-A **RESTful API** built with **Node.js, Express, and MongoDB** to manage company records.
-Supports CRUD operations and advanced filtering options.
+This is a full-stack project built with **Node.js (Express)** for the backend and **React (Vite)** for the frontend. The application provides APIs for managing companies and displays the data in a clean UI.
+
+---
+
+## 🚀 Tech Stack
+
+* **Backend**: Node.js, Express, MongoDB, Mongoose
+* **Frontend**: React (Vite), Axios, TailwindCSS
+* **Other Tools**: Git, Postman
 
 ---
 
 ## 📂 Project Structure
 
 ```
-companies-api/
-│── server.js                  # Entry point
-│── config/
-│   └── db.js                  # MongoDB connection
-│── models/
-│   └── Company.js             # Company schema
-│── routes/
-│   └── companyRoutes.js       # API routes
-│── controllers/
-│   └── companyController.js   # Controller logic
-│── .env                       # Environment variables
-│── package.json
-│── README.md                  # Documentation
+company_api_assessment/
+│   ├── models/           # Mongoose schemas
+│   ├── routes/           # API routes
+│   ├── server.js         # Entry point
+│   └── .env              # Environment variables
+│
+├── client/               # Frontend folder (React + Vite)
+│   ├── src/
+│   │  
+│   │   ├── App.jsx       # Main app file
+│   │   └── main.jsx      # React entry
+│   └── index.html
+│//other dependecies files
+└── README.md             # Documentation
 ```
-
----
-
-## 🚀 Features
-
-* Create new company records
-* Get all companies with **filtering** options
-* Fetch a single company by ID
-* Update company details
-* Delete company records
-* Filters supported:
-
-  * `industry`, `location`, `size`, `ceo`, `foundedYear`
-  * Revenue range: `minRevenue`, `maxRevenue`
-
----
-
-## 🛠️ Tech Stack
-
-* **Backend**: Node.js, Express.js
-* **Database**: MongoDB + Mongoose
-* **Environment Variables**: dotenv
-* **Dev Tool**: Nodemon
 
 ---
 
 ## ⚙️ Setup Instructions
 
-1. Clone the repository
+### 1️⃣ Clone the repository
 
-   ```bash
-   git clone https://github.com/your-username/companies-api.git
-   cd companies-api
-   ```
+```bash
+git clone https://github.com/Adyasha56/company_api_assessment.git
+cd company_api_assessment
+```
 
-2. Install dependencies
+### 2️⃣ Setup Backend
 
-   ```bash
-   npm install
-   ```
+```bash
+cd backend
+npm install
+```
 
-3. Add environment variables in `.env`
+Create a `.env` file inside `backend/` and add:
 
-   ```env
-   PORT=5000
-   MONGO_URI=your_mongodb_connection_string
-   ```
+```
+PORT=5000
+MONGO_URI=your_mongo_connection_url
+```
 
-4. Start the server
+Run the server:
 
-   ```bash
-   npm run dev
-   ```
+```bash
+npm start
+```
 
-   Server will run on: `http://localhost:5000`
+Backend runs on: `http://localhost:5000`
+
+---
+
+### 3️⃣ Setup Frontend
+
+```bash
+cd ../client
+npm install
+```
+
+Run the React app:
+
+```bash
+npm run dev
+```
+
+Frontend runs on: `http://localhost:5173`
 
 ---
 
 ## 📡 API Endpoints
 
-### Base URL
-
-```
-http://localhost:5000/api/companies
-```
-
-### 1. Create Company
-
-**POST** `/api/companies`
-
-```json
-{
-  "name": "TechCorp",
-  "industry": "Software",
-  "location": "Bangalore",
-  "size": "500+",
-  "ceo": "John Doe",
-  "foundedYear": 2012,
-  "revenue": 1500000
-}
-```
+* `GET /api/companies` → Fetch all companies
+* `POST /api/companies` → Create a new company
+* `PUT /api/companies/:id` → Update company by ID
+* `DELETE /api/companies/:id` → Delete company by ID
 
 ---
 
-### 2. Get All Companies (with filters)
+## 🌟 Features
 
-**GET** `/api/companies?industry=Software&location=Bangalore&minRevenue=100000`
-
----
-
-### 3. Get Company by ID
-
-**GET** `/api/companies/:id`
+✅ Backend APIs with CRUD operations
+✅ MongoDB Database connection
+✅ Frontend UI with company listing
+✅ Axios integration with backend
+✅ Vite + React for fast development
 
 ---
-
-### 4. Update Company
-
-**PUT** `/api/companies/:id`
-
-```json
-{
-  "location": "Hyderabad",
-  "revenue": 2000000
-}
-```
-
----
-
-### 5. Delete Company
-
-**DELETE** `/api/companies/:id`
-
----
-
-## ⚠️ Error Handling
-
-* Invalid MongoDB ID → `400 Bad Request`
-* Company not found → `404 Not Found`
-* Missing required fields → `400 Validation Error`
-
----
-
-
-
 
 
