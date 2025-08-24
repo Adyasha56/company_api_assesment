@@ -15,9 +15,22 @@ export const createCompany = async (req, res) => {
 export const getCompanies = async (req, res) => {
   try {
     const filters = {};
+
+    // Existing filters
     if (req.query.industry) filters.industry = req.query.industry;
     if (req.query.location) filters.location = req.query.location;
     if (req.query.size) filters.size = req.query.size;
+
+    // New optional filters
+    if (req.query.ceo) filters.ceo = req.query.ceo;
+    if (req.query.foundedYear) filters.foundedYear = req.query.foundedYear;
+
+    // For numeric range filter, like revenue
+    if (req.query.minRevenue || req.query.maxRevenue) {
+      filters.revenue = {};
+      if (req.query.minRevenue) filters.revenue.$gte = Number(req.query.minRevenue);
+      if (req.query.maxRevenue) filters.revenue.$lte = Number(req.query.maxRevenue);
+    }
 
     const companies = await Company.find(filters);
     res.json(companies);
@@ -25,6 +38,7 @@ export const getCompanies = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
 
 // Get One
 export const getCompanyById = async (req, res) => {

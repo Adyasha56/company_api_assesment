@@ -6,7 +6,12 @@ const companySchema = new mongoose.Schema({
   location: { type: String, required: true },
   size: { type: Number },
   foundedYear: { type: Number },
+  website: { type: String },
+  revenue: { type: Number },
+  ceo: { type: String },
+  description: { type: String }
 }, { timestamps: true });
+
 
 const Company = mongoose.model("Company", companySchema);
 
